@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.center-loader {
+  top: 50%;
+  right: 50%;
+}
