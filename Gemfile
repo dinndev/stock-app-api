@@ -16,6 +16,9 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
 
+gem 'iex-ruby-client'
+
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
