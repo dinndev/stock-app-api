@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   }
 
   resources :stocks
+  resources :transactions, only: [:index ]
+  get 'stock_list', to: 'stocks#stock_list'
+  # destroy 'sell', to: "stocks#sell"
+  post 'buy', to: "transactions#buy"
 
   
 

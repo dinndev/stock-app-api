@@ -14,8 +14,8 @@ export const DataContext = React.createContext({});
 function App() {
   return (
     <TransactionContextProvider initialState={initialState} reducer={reducer}>
-      <Nav />
       <BrowserRouter>
+        <Nav />
         <Routes>
           <Route path="/" element={<Form />} />
           <Route path="/portfolio" element={<Portfolio />} />

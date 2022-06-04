@@ -12,7 +12,7 @@ function Portfolio() {
     const get_stocks = async (_) => {
       const data = await axios({
         method: "GET",
-        url: "http://localhost:3000/stocks",
+        url: "http://localhost:3000/stock_list",
         headers: {
           Authorization: user.headers.authorization,
         },
@@ -34,13 +34,13 @@ function Portfolio() {
         },
       });
       dispatch({
-        type: "SET_USER",
+        type: "SET_CURRENT_USER",
         payload: data,
       });
     };
     get_stocks();
-    // current_user();
-  }, [dispatch, user]);
+    current_user();
+  }, []);
   return (
     <div className="flex w-full justify-between items-center">
       {!loading ? <Card stocks={stocks} /> : <Loader />}
