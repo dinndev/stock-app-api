@@ -1,7 +1,6 @@
 import React from "react";
 
 function Card({ stocks }) {
-  console.log(stocks);
   return (
     <div className="flex flex-col w-1/2">
       <div className="w-full item-center flex justify-start py-10 px-16">
@@ -25,7 +24,7 @@ function Card({ stocks }) {
               </span>
               <button
                 type="button"
-                class="focus:outline-none text-white bg-green-400 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-medium w-1/4 rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                className="focus:outline-none text-white bg-green-400 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-medium w-1/4 rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
               >
                 Buy
               </button>

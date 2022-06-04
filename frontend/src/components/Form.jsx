@@ -18,8 +18,8 @@ function Form() {
     try {
       const data = await axios.post("http://localhost:3000/login", {
         user: {
-          email: "aladin.penagunda@sun-asterisk.com",
-          password: "1231password",
+          email: emailInputOnchageValue,
+          password: passwordInputOnchageValue,
         },
       });
       dispatch({
