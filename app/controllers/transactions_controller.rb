@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-
+   before_action :is_approved, only: [:buy, :sell]
     def buy
         user = User.find(params[:user])
         stock = Stock.find_by(ticker: params[:stock])
@@ -26,15 +26,19 @@ class TransactionsController < ApplicationController
             render json: user_stocks, status: :ok, message: "Success"
         else
             render json: transaction, status: 401, message: "something went wrong" 
+            
         end
     end
 
    private
 
-
     def transaction_params
         params.require(:transaction).permit(:user, :name, :mode, :price, :ticker)
     end
 
-    
+    def is_approved
+       if !current_user.approved?
+         render status: 401, message: "Please wait for admin approval"
+       end
+    end    
 end

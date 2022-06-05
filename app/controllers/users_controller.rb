@@ -1,10 +1,19 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
-    before_action :is_admin, only: [:user_lists, :edit, :index, :pending_traders, :show_all_transactions]
+    before_action :is_admin, only: [:user_lists :edit, :index, :pending_traders, :show_all_transactions, :create_user]
 
     def portfolio
       stocks = current_user.stocks
       render json: stocks, status: :ok, message: "stocks lists "
+    end
+
+    def create_user
+      user = User.new(user_params)
+      if user.save
+        render json: user, status: :ok, message: "User created"
+      else
+        render  status: 400, message: "Something went wrong"
+      end
     end
 
     def user_lists
@@ -42,6 +51,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:email)
+        params.require(:user).permit(:email, :password)
     end
 end
