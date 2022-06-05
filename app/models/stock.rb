@@ -1,6 +1,6 @@
 class Stock < ApplicationRecord
     has_many :transactions
-    has_many :users, through: :transactions, dependent: :destroy
+    has_many :users, through: :transactions
     validates :name, presence: true
     validates :price, presence: true
 
