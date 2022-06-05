@@ -10,8 +10,16 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :stocks
-
+  resources :stocks, exept: [:index]
+  get 'portfolio', to: "user#portfolio"
+  resources :transactions, only: [:index]
+  get 'stock_list', to: 'stocks#stock_list'
+  post 'sell', to: "transactions#sell"
+  post 'buy', to: "transactions#buy"
+  get 'pending_traders', to: "users#pending_traders"
+  get 'all_transactions', to: "users#show_all_transactions"
+  get 'user_lists', to: "users#user_lists"
+  
   
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

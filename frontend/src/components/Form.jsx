@@ -15,24 +15,20 @@ function Form() {
   const login = async (e) => {
     e.preventDefault();
 
-    if (emailInputOnchageValue !== "" && passwordInputOnchageValue !== "") {
-      try {
-        const data = await axios.post("http://localhost:3000/login", {
-          user: {
-            email: emailInputOnchageValue,
-            password: passwordInputOnchageValue,
-          },
-        });
-        dispatch({
-          type: "SET_USER",
-          payload: data,
-        });
-        navigate("portfolio");
-      } catch (err) {
-        console(err);
-      }
-    } else {
-      return;
+    try {
+      const data = await axios.post("http://localhost:3000/login", {
+        user: {
+          email: "jendanielev@gmail.com",
+          password: "password",
+        },
+      });
+      dispatch({
+        type: "SET_USER",
+        payload: data,
+      });
+      navigate("portfolio");
+    } catch (err) {
+      console.log(err);
     }
   };
 
