@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'pending_traders', to: "users#pending_traders"
   get 'all_transactions', to: "users#show_all_transactions"
   get 'user_lists', to: "users#user_lists"
+  post 'approve_user', to: "users#approve_user"
+
   
   
 

@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+   before_action :authenticate_user!
    before_action :is_approved, only: [:buy, :sell]
     def buy
         user = User.find(params[:user])

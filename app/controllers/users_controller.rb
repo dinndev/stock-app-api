@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
-    before_action :is_admin, only: [:user_lists :edit, :index, :pending_traders, :show_all_transactions, :create_user]
+    before_action :is_admin, only: [:user_lists :edit, :index, :pending_traders, :show_all_transactions, :create_user, :approve_user]
 
     def portfolio
       stocks = current_user.stocks
@@ -42,6 +42,16 @@ class UsersController < ApplicationController
      users = User.where(approved: false)
      render json: users, status: :ok, message: "stocks lists "
     end
+
+    def approve_user(user_id)
+      user = User.find(user_id)
+      if user.update(approved: true)
+      render json: user, status: :ok, message: "User approved"
+      else 
+        render status: 400, message: "Something went wrong"
+
+      end
+  end
     
     private
     def is_admin
